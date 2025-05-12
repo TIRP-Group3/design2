@@ -1,0 +1,353 @@
+/* Register Page Styles */
+.register-page {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.register-container {
+  background-color: rgba(249, 250, 251, 1);
+  display: flex;
+  width: 100%;
+  padding: 74px 80px 161px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-content {
+  display: flex;
+  margin-bottom: -32px;
+  width: 454px;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.logo-container {
+  background-color: rgba(0, 0, 0, 0);
+  align-self: center;
+  display: flex;
+  width: 177px;
+  max-width: 100%;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.logo-frame {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.logo-image {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 30px;
+  align-self: stretch;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.logo-text {
+  color: rgba(31, 41, 55, 1);
+  font-size: 20px;
+  font-family:
+    Roboto,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  align-self: start;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 125px;
+}
+
+.register-header {
+  background-color: rgba(0, 0, 0, 0);
+  margin-top: 63px;
+  padding: 2px 3px;
+}
+
+.register-title-container {
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  padding: 3px 45px;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+}
+
+.register-title {
+  color: rgba(17, 24, 39, 1);
+  font-size: 30px;
+  font-family:
+    Poppins,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  z-index: 10;
+  margin-top: -4px;
+}
+
+.register-subtitle {
+  color: rgba(0, 0, 0, 1);
+  font-size: 12px;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  align-self: center;
+  margin-top: 19px;
+}
+
+.register-subtitle-text {
+  font-family:
+    Poppins,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  color: rgba(75, 85, 99, 1);
+}
+
+.register-signin-link {
+  font-family:
+    Poppins,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(37, 99, 235, 1);
+  cursor: pointer;
+}
+
+.register-form-container {
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-top: 32px;
+  padding: 32px 38px 135px;
+}
+
+/* Form Styles */
+.register-form {
+  background-color: rgba(0, 0, 0, 0);
+  margin-bottom: -27px;
+}
+
+.form-group {
+  background-color: rgba(0, 0, 0, 0);
+  margin-top: 21px;
+}
+
+.form-group:first-child {
+  margin-top: 0;
+}
+
+.form-label {
+  background-color: rgba(0, 0, 0, 0);
+  width: 368px;
+  max-width: 100%;
+  padding-bottom: 10px;
+  font-family:
+    Poppins,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  color: rgba(55, 65, 81, 1);
+  font-weight: 500;
+}
+
+.input-wrapper {
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  padding: 2px;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.form-input {
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(209, 213, 219, 1);
+  display: flex;
+  height: 38px;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.password-input-container {
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(209, 213, 219, 1);
+  display: flex;
+  padding: 0 45px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.password-input-container .form-input {
+  border: none;
+  box-shadow: none;
+  flex-grow: 1;
+}
+
+.password-icon {
+  aspect-ratio: 0.79;
+  object-fit: contain;
+  object-position: center;
+  width: 30px;
+  position: absolute;
+  right: 10px;
+}
+
+.terms-container {
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  margin-top: 21px;
+  width: 368px;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: start;
+  font-family:
+    Poppins,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  color: rgba(17, 24, 39, 1);
+  font-weight: 400;
+}
+
+.terms-checkbox-container {
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.terms-checkbox {
+  border-radius: 1px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 16px;
+  flex-shrink: 0;
+  height: 16px;
+}
+
+.terms-label {
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  padding-bottom: 6px;
+  align-items: stretch;
+  gap: 1px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.terms-link {
+  color: rgba(37, 99, 235, 1);
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  margin: 0 3px;
+}
+
+.submit-button-container {
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  margin-top: 23px;
+  padding: 2px;
+  flex-direction: column;
+  align-items: stretch;
+  font-family:
+    Poppins,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 500;
+  text-align: center;
+  justify-content: center;
+}
+
+.submit-button {
+  border-radius: 6px;
+  background-color: rgba(37, 99, 235, 1);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: 9px 45px 19px;
+  cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+  .register-container {
+    max-width: 100%;
+    padding: 74px 20px 100px;
+  }
+
+  .register-content {
+    margin-bottom: 10px;
+  }
+
+  .register-header {
+    margin-top: 40px;
+  }
+
+  .register-title-container {
+    max-width: 100%;
+    padding: 3px 20px;
+  }
+
+  .register-form-container {
+    max-width: 100%;
+    padding: 32px 20px 100px;
+  }
+
+  .form-label {
+    margin-right: 2px;
+    padding-right: 20px;
+  }
+
+  .terms-container {
+    margin-right: 2px;
+    padding-right: 20px;
+  }
+
+  .password-input-container {
+    padding: 0 20px;
+  }
+
+  .submit-button {
+    padding: 9px 20px 19px;
+  }
+}

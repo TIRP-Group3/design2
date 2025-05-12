@@ -1,0 +1,351 @@
+/* Main Admin Login Page */
+.admin-login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.admin-login-container {
+  display: flex;
+  width: 896px;
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow:
+    0px 8px 10px 0px rgba(0, 0, 0, 0.1),
+    0px 20px 25px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.admin-login-layout {
+  display: flex;
+  width: 100%;
+}
+
+/* Admin Sidebar Column */
+.admin-sidebar-column {
+  width: 50%;
+  position: relative;
+}
+
+.admin-sidebar-container {
+  background-color: #4f46e5;
+  border-radius: 16px 0 0 16px;
+  padding: 48px;
+  position: relative;
+  height: 100%;
+}
+
+.admin-sidebar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.1;
+  border-radius: 16px 0 0 16px;
+}
+
+.admin-sidebar-content {
+  position: relative;
+  z-index: 1;
+}
+
+.admin-sidebar-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  font-family:
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  margin-bottom: 63px;
+}
+
+.admin-sidebar-description {
+  font-size: 16px;
+  color: #e0e7ff;
+  font-family:
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  margin-bottom: 55px;
+}
+
+.admin-sidebar-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-feature-text {
+  font-size: 16px;
+  color: #fff;
+  font-family:
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+/* Admin Form Column */
+.admin-form-column {
+  width: 50%;
+}
+
+.admin-form-container {
+  padding: 48px;
+  height: 100%;
+}
+
+.admin-form-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  font-family:
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  margin-bottom: 42px;
+}
+
+.admin-highlight {
+  color: #f52c2c;
+}
+
+.admin-form-subtitle {
+  font-size: 16px;
+  color: #4b5563;
+  font-family:
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  margin-bottom: 24px;
+}
+
+.admin-form-group {
+  margin-bottom: 16px;
+}
+
+.admin-form-label {
+  display: block;
+  font-size: 14px;
+  color: #374151;
+  font-family:
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  margin-bottom: 4px;
+}
+
+.admin-input-field {
+  width: 100%;
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 16px;
+  font-family:
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+.admin-form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.admin-remember-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.admin-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 1px;
+  border: 0.5px solid #000;
+}
+
+.admin-checkbox-label {
+  font-size: 14px;
+  color: #4b5563;
+  font-family:
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+.admin-forgot-password {
+  font-size: 14px;
+  color: #4f46e5;
+  font-family:
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  text-decoration: none;
+}
+
+.admin-signin-button {
+  width: 100%;
+  height: 40px;
+  background-color: #4f46e5;
+  color: #fff;
+  font-size: 16px;
+  font-family:
+    Roboto,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 59px;
+}
+
+.admin-client-login-container {
+  display: flex;
+  justify-content: center;
+}
+
+.admin-client-login-button {
+  font-size: 11px;
+  color: #19fa19;
+  font-family:
+    Poppins,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  font-weight: 700;
+  padding: 14px 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  .admin-login-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-login-container {
+    width: 95%;
+    flex-direction: column;
+  }
+
+  .admin-login-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar-column,
+  .admin-form-column {
+    width: 100%;
+  }
+
+  .admin-sidebar-container {
+    border-radius: 16px 16px 0 0;
+  }
+
+  .admin-sidebar-overlay {
+    border-radius: 16px 16px 0 0;
+  }
+}
