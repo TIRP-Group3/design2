@@ -5,6 +5,7 @@ import AdminLoginPage from "./pages/AdminLoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
 import ClientDashboardPage from "./pages/ClientDashboardPage";
+import UploadDatasetPage from "./pages/UploadDatasetPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
         <Route path="/client-dashboard" element={<ClientDashboardPage />} />
+        <Route path="/upload-dataset" element={<UploadDatasetPage />} />
       </Routes>
     </Router>
   );

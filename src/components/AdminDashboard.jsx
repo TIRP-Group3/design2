@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function AdminDashboard() {
+  const navigate = useNavigate();
+
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
@@ -243,7 +246,7 @@ function AdminDashboard() {
         <div className="dataset-section">
           <div className="card-header">
             <div className="card-title">Dataset Management</div>
-            <div className="upload-button">Upload Dataset</div>
+            <div className="upload-button" onClick={() => navigate('/upload-dataset')} style={{cursor: 'pointer'}}>Upload Dataset</div>
           </div>
           <div className="dataset-cards">
             <div className="dataset-card">
