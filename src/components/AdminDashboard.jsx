@@ -18,8 +18,18 @@ function AdminDashboard() {
               <div className="nav-container">
                 <div className="nav-items">
                   <div className="nav-item active">Dashboard</div>
-                  <div className="nav-item">Detection</div>
-                  <div className="nav-item">Upload Dataset</div>
+                  <div
+                    className="nav-item"
+                    onClick={() => navigate("/admin-detection")}
+                  >
+                    Detection
+                  </div>
+                  <div
+                    className="nav-item"
+                    onClick={() => navigate("/upload-dataset")}
+                  >
+                    Upload Dataset
+                  </div>
                   <div className="nav-item">Settings</div>
                   <div className="nav-item">Predictions</div>
                 </div>
@@ -246,7 +256,13 @@ function AdminDashboard() {
         <div className="dataset-section">
           <div className="card-header">
             <div className="card-title">Dataset Management</div>
-            <div className="upload-button" onClick={() => navigate('/upload-dataset')} style={{cursor: 'pointer'}}>Upload Dataset</div>
+            <div
+              className="upload-button"
+              onClick={() => navigate("/upload-dataset")}
+              style={{ cursor: "pointer" }}
+            >
+              Upload Dataset
+            </div>
           </div>
           <div className="dataset-cards">
             <div className="dataset-card">

@@ -1,0 +1,394 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+.detection-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Header Styles */
+.detection-header {
+  display: flex;
+  width: 100%;
+  height: 72px;
+  padding-left: 80px;
+  padding-right: 80px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  height: 72px;
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.platform-name {
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: 32px;
+}
+
+.nav-item {
+  color: #4b5563;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.nav-item.active {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.mobile-menu {
+  display: none;
+  font-size: 24px;
+  color: #4b5563;
+}
+
+/* Main Content Styles */
+.detection-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 24px 80px;
+  gap: 24px;
+}
+
+.detection-title {
+  color: #1f2937;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow:
+    0px 1px 2px 0px rgba(0, 0, 0, 0.1),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+.stat-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-label {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.stat-value {
+  color: #1f2937;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.threat-value {
+  color: #dc2626;
+}
+
+.quarantine-value {
+  color: #ea580c;
+}
+
+.health-value {
+  color: #059669;
+}
+
+/* Timeline Card */
+.timeline-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow:
+    0px 1px 2px 0px rgba(0, 0, 0, 0.1),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.time-filter {
+  display: flex;
+  gap: 16px;
+}
+
+.filter-option {
+  color: #4b5563;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-option.active {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.timeline-chart {
+  width: 100%;
+  height: 400px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.chart-bars {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.chart-bar {
+  width: 1px;
+  background-color: #3b82f6;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.chart-bar.danger {
+  background-color: #ef4444;
+}
+
+.chart-bar.warning {
+  background-color: #f97316;
+}
+
+/* Threat Section */
+.threat-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.threat-distribution-card,
+.recent-threats-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow:
+    0px 1px 2px 0px rgba(0, 0, 0, 0.1),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+.distribution-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.distribution-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.color-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+}
+
+.color-indicator.danger {
+  background-color: #ef4444;
+}
+
+.color-indicator.primary {
+  background-color: #3b82f6;
+}
+
+.color-indicator.success {
+  background-color: #10b981;
+}
+
+.color-indicator.warning {
+  background-color: #f59e0b;
+}
+
+.item-name {
+  color: #4b5563;
+  font-size: 16px;
+}
+
+.item-percentage {
+  color: #000;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.threats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.threat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.threat-item.high-risk {
+  background-color: #fef2f2;
+}
+
+.threat-item.medium-risk {
+  background-color: #fff7ed;
+}
+
+.threat-item.low-risk {
+  background-color: #fffbeb;
+}
+
+.threat-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.threat-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.threat-name {
+  color: #1f2937;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.threat-time {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.threat-risk {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.high-risk .threat-risk {
+  color: #ef4444;
+}
+
+.medium-risk .threat-risk {
+  color: #f97316;
+}
+
+.low-risk .threat-risk {
+  color: #f59e0b;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  .detection-header {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .detection-main {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .threat-section {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .detection-header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .detection-main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .nav-items {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}

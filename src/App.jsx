@@ -1,22 +1,24 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
-import RegisterPage from "./pages/RegisterPage";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
-import ClientDashboardPage from "./pages/ClientDashboardPage";
+import AdminDetectionPage from "./pages/AdminDetectionPage";
 import UploadDatasetPage from "./pages/UploadDatasetPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ClientDashboardPage from "./pages/ClientDashboardPage";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/admin-login" element={<AdminLoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/admin-login" element={<AdminLoginPage />} />
         <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
-        <Route path="/client-dashboard" element={<ClientDashboardPage />} />
+        <Route path="/admin-detection" element={<AdminDetectionPage />} />
         <Route path="/upload-dataset" element={<UploadDatasetPage />} />
+        <Route path="/client-dashboard" element={<ClientDashboardPage />} />
       </Routes>
     </Router>
   );
