@@ -26,10 +26,6 @@ function LoginForm() {
 
   return (
     <div className="form-container">
-      <div className="form-tabs">
-        <div className="tab-active">Login</div>
-        <div className="tab-inactive">Register</div>
-      </div>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="form-label">Email Address</label>
