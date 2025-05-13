@@ -1,0 +1,267 @@
+/* QuickScan.css */
+
+.quick-scan-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  height: 72px;
+  padding-left: 80px;
+  padding-right: 80px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  height: 72px;
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+.nav-link {
+  color: #4b5563;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.nav-link.active {
+  color: #2563eb;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 80px;
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 32px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow:
+    0px 2px 4px 0px rgba(0, 0, 0, 0.1),
+    0px 4px 6px 0px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  color: #000;
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 232px;
+  border-radius: 8px;
+  border: 2px dashed #93c5fd;
+}
+
+.upload-icon {
+  margin-bottom: 12px;
+}
+
+.upload-text {
+  color: #4b5563;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.browse-button {
+  padding: 10px 24px;
+  background-color: #2563eb;
+  border-radius: 8px;
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+}
+
+.supported-formats {
+  color: #6b7280;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-text {
+  color: #4b5563;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.progress-percentage {
+  color: #2563eb;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+}
+
+.progress-bar {
+  width: 75%;
+  height: 100%;
+  background-color: #2563eb;
+  border-radius: 9999px;
+}
+
+.info-cards {
+  display: flex;
+  gap: 24px;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  padding: 17px;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  flex: 1;
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-title {
+  color: #000;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.info-value {
+  color: #4b5563;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.secondary-button {
+  padding: 11px 17px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  color: #4b5563;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.primary-button {
+  padding: 11px 16px;
+  border-radius: 8px;
+  background-color: #2563eb;
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+  .header {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .main-content {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .main-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .info-cards {
+    flex-direction: column;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+}

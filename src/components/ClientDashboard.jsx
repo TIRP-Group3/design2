@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ClientDashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
@@ -30,7 +32,7 @@ const ClientDashboard = () => {
             </div>
             <nav className="main-nav">
               <div className="nav-item active">Dashboard</div>
-              <div className="nav-item">Quick Scan</div>
+              <Link to="/quick-scan" className="nav-item">Quick Scan</Link>
               <div className="nav-item">History</div>
               <div className="nav-item">Reports</div>
               <div className="nav-item">Settings</div>
@@ -100,7 +102,7 @@ const ClientDashboard = () => {
             <p className="section-description">
               Scan a single file or small directory
             </p>
-            <button className="scan-button">Start Scan</button>
+            <button className="scan-button" onClick={() => navigate('/quick-scan')}>Start Scan</button>
           </section>
 
           <section className="scan-results-section">
