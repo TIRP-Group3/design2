@@ -17,21 +17,26 @@ function AdminDashboard() {
               />
               <div className="nav-container">
                 <div className="nav-items">
-                  <div className="nav-item active">Dashboard</div>
+                  <div className={`nav-item${window.location.pathname === "/admin-dashboard" ? " active" : ""}`}>Dashboard</div>
                   <div
-                    className="nav-item"
+                    className={`nav-item${window.location.pathname === "/admin-detection" ? " active" : ""}`}
                     onClick={() => navigate("/admin-detection")}
                   >
                     Detection
                   </div>
                   <div
-                    className="nav-item"
+                    className={`nav-item${window.location.pathname === "/upload-dataset" ? " active" : ""}`}
                     onClick={() => navigate("/upload-dataset")}
                   >
                     Upload Dataset
                   </div>
                   <div className="nav-item">Settings</div>
-                  <div className="nav-item">Predictions</div>
+                  <div
+                    className={`nav-item${window.location.pathname === "/admin-prediction" ? " active" : ""}`}
+                    onClick={() => navigate("/admin-prediction")}
+                  >
+                    Predictions
+                  </div>
                 </div>
               </div>
             </div>

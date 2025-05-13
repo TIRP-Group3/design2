@@ -11,6 +11,7 @@ import QuickScanPage from "./pages/QuickScanPage";
 import ClientHistoryPage from "./pages/ClientHistoryPage";
 import AdminScanResultPage from "./pages/AdminScanResultPage";
 import AdminReportsPage from "./pages/AdminReportsPage";
+import AdminPredictionPage from "./pages/AdminPredictionPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/quick-scan" element={<QuickScanPage />} />
         <Route path="/admin-scan-results" element={<AdminScanResultPage />} />
         <Route path="/admin-reports" element={<AdminReportsPage />} />
+        <Route path="/admin-prediction" element={<AdminPredictionPage />} />
       </Routes>
     </Router>
   );
