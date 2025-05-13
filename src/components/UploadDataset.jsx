@@ -212,7 +212,7 @@ function UploadDataset() {
           </div>
 
           <div className="action-buttons">
-            <button className="outline-button">Download Report</button>
+            <button className="outline-button" onClick={() => navigate('/admin-reports')}>Download Report</button>
             <button className="primary-button" onClick={() => navigate('/admin-scan-results')}>Scan Results</button>
           </div>
         </div>
