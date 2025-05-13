@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function UploadDataset() {
+  const navigate = useNavigate();
+
   return (
     <div className="upload-container">
       <header className="upload-header">
@@ -210,7 +213,7 @@ function UploadDataset() {
 
           <div className="action-buttons">
             <button className="outline-button">Download Report</button>
-            <button className="primary-button">Scan Results</button>
+            <button className="primary-button" onClick={() => navigate('/admin-scan-results')}>Scan Results</button>
           </div>
         </div>
       </main>
