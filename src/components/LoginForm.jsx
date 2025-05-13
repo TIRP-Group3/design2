@@ -1,13 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    rememberMe: false
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically make an API call to verify credentials
+    // For now, we'll just navigate to the dashboard
+    navigate("/client-dashboard");
+  };
+
   return (
     <div className="form-container">
       <div className="form-tabs">
         <div className="tab-active">Login</div>
         <div className="tab-inactive">Register</div>
       </div>
-      <div className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="form-label">Email Address</label>
           <div className="input-wrapper">
@@ -19,7 +42,14 @@ function LoginForm() {
                   alt="Email Icon"
                 />
               </div>
-              <div className="input-placeholder">Enter your email</div>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter your email"
+                required
+              />
             </div>
           </div>
         </div>
@@ -34,28 +64,37 @@ function LoginForm() {
                   alt="Password Icon"
                 />
               </div>
-              <div className="input-placeholder">Enter your password</div>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter your password"
+                required
+              />
             </div>
           </div>
         </div>
         <div className="form-options">
           <label className="remember-option">
-            <div className="checkbox-input"></div>
+            <input
+              type="checkbox"
+              name="rememberMe"
+              checked={formData.rememberMe}
+              onChange={handleChange}
+            />
             <div className="checkbox-label">Remember me</div>
           </label>
           <div className="forgot-password">Forgot password?</div>
         </div>
-        <button className="signin-button">Sign In</button>
+        <button type="submit" className="signin-button">Sign In</button>
         <div className="alternative-login">
           <div className="divider-container">
             <div className="divider-text">Or continue with</div>
             <div className="divider-line"></div>
           </div>
         </div>
-        <div className="admin-login-container">
-          <button className="admin-login-button">admin login</button>
-        </div>
-      </div>
+      </form>
     </div>
   );
 }

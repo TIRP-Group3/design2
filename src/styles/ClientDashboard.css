@@ -1,0 +1,270 @@
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Header Styles */
+.dashboard-header {
+  display: flex;
+  height: 65px;
+  align-items: center;
+  border-width: 1px;
+  border-color: #e5e7eb;
+  background-color: #fff;
+  padding: 0 32px;
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-item {
+  font-size: 14px;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+.nav-item.active {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: #eef2ff;
+  font-size: 14px;
+  color: #4f46e5;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 36px;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+}
+
+.username {
+  font-size: 14px;
+  color: #374151;
+}
+
+/* Main Content Styles */
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 32px;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Quick Scan Section */
+.quick-scan-section {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 4px solid #4f46e5;
+  padding: 24px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.section-description {
+  font-size: 16px;
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+.scan-button {
+  width: 100%;
+  background-color: #4f46e5;
+  color: #fff;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Scan Results Section */
+.scan-results-section {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.view-all-link {
+  font-size: 14px;
+  color: #4f46e5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.results-table th {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: #6b7280;
+  padding-bottom: 16px;
+}
+
+.results-table td {
+  padding: 16px 0;
+  font-size: 14px;
+  color: #000;
+  border-top: 1px solid #f3f4f6;
+}
+
+.status-badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 9999px;
+}
+
+.status-badge.clean {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.status-badge.threat {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.status-badge.protected {
+  background-color: #d1fae5;
+  color: #059669;
+  font-size: 14px;
+  padding: 4px 12px;
+}
+
+.action-link {
+  color: #4f46e5;
+  cursor: pointer;
+}
+
+/* Protection Status Section */
+.protection-status-section {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.status-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-label span {
+  font-size: 16px;
+  color: #000;
+}
+
+.status-value {
+  font-size: 16px;
+  color: #4b5563;
+}
+
+.status-value.active {
+  color: #059669;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  .dashboard-header {
+    padding: 0 16px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .dashboard-main {
+    padding: 16px;
+  }
+
+  .dashboard-content {
+    gap: 16px;
+  }
+}
