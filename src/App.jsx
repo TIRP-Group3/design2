@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ClientDashboardPage from "./pages/ClientDashboardPage";
 import QuickScanPage from "./pages/QuickScanPage";
+import ClientHistoryPage from "./pages/ClientHistoryPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/admin-detection" element={<AdminDetectionPage />} />
         <Route path="/upload-dataset" element={<UploadDatasetPage />} />
         <Route path="/client-dashboard" element={<ClientDashboardPage />} />
+        <Route path="/client-history" element={<ClientHistoryPage />} />
         <Route path="/quick-scan" element={<QuickScanPage />} />
       </Routes>
     </Router>
