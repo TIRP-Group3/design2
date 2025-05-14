@@ -27,7 +27,7 @@ function LoginPage() {
             <LoginForm />
             <button
               style={{ color: "red", fontWeight: "bold", marginTop: "20px", background: "white", border: "1px solid #ccc", borderRadius: "10px", padding: "10px 30px", cursor: "pointer" }}
-              onClick={() => navigate("/admin-login")}
+              onClick={() => navigate("/admin")}
             >
               admin login
             </button>

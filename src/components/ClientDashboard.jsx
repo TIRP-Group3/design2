@@ -32,9 +32,9 @@ const ClientDashboard = () => {
             </div>
             <nav className="main-nav">
               <div className="nav-item active">Dashboard</div>
-              <Link to="/quick-scan" className="nav-item">Quick Scan</Link>
-              <div className="nav-item" onClick={() => navigate('/client-history')} style={{cursor: 'pointer'}}>History</div>
-              <div className="nav-item" onClick={() => navigate('/client-report')} style={{cursor: 'pointer'}}>Reports</div>
+              <Link to="/client/quick-scan" className="nav-item">Quick Scan</Link>
+              <div className="nav-item" onClick={() => navigate('/client/history')} style={{cursor: 'pointer'}}>History</div>
+              <div className="nav-item" onClick={() => navigate('/client/report')} style={{cursor: 'pointer'}}>Reports</div>
               <div className="nav-item" onClick={() => navigate('/client/settings')} style={{cursor: 'pointer'}}>Settings</div>
             </nav>
           </div>
@@ -102,13 +102,13 @@ const ClientDashboard = () => {
             <p className="section-description">
               Scan a single file or small directory
             </p>
-            <button className="scan-button" onClick={() => navigate('/quick-scan')}>Start Scan</button>
+            <button className="scan-button" onClick={() => navigate('/client/quick-scan')}>Start Scan</button>
           </section>
 
           <section className="scan-results-section">
             <div className="section-header">
               <h2 className="section-title">Recent Scan Results</h2>
-              <Link to="/results" className="view-all-link">
+              <Link to="/client/scan-result" className="view-all-link">
                 View All Results
               </Link>
             </div>
