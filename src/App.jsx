@@ -14,6 +14,7 @@ import AdminReportsPage from "./pages/AdminReportsPage";
 import AdminPredictionPage from "./pages/AdminPredictionPage";
 import ClientScanResultPage from "./pages/ClientScanResultPage";
 import ClientReportPage from "./pages/ClientReportPage";
+import AdminSettingsPage from "./pages/AdminSettingsPage";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/admin-prediction" element={<AdminPredictionPage />} />
         <Route path="/client-scan-results" element={<ClientScanResultPage />} />
         <Route path="/client-report" element={<ClientReportPage />} />
+        <Route path="/admin-settings" element={<AdminSettingsPage />} />
       </Routes>
     </Router>
   );

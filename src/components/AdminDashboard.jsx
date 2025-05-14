@@ -30,7 +30,12 @@ function AdminDashboard() {
                   >
                     Upload Dataset
                   </div>
-                  <div className="nav-item">Settings</div>
+                  <div
+                    className={`nav-item${window.location.pathname === "/admin-settings" ? " active" : ""}`}
+                    onClick={() => navigate("/admin-settings")}
+                  >
+                    Settings
+                  </div>
                   <div
                     className={`nav-item${window.location.pathname === "/admin-prediction" ? " active" : ""}`}
                     onClick={() => navigate("/admin-prediction")}
