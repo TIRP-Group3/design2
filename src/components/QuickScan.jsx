@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/QuickScan.css";
 
 const QuickScan = () => {
   const [uploadProgress, setUploadProgress] = useState(75);
+  const navigate = useNavigate();
 
   const handleFileUpload = (event) => {
     // Handle file upload logic here
@@ -21,8 +22,7 @@ const QuickScan = () => {
   };
 
   const handleViewResults = () => {
-    // Handle view results logic
-    console.log("View results triggered");
+    navigate("/client-scan-results");
   };
 
   return (
