@@ -35,7 +35,7 @@ const ClientDashboard = () => {
               <Link to="/quick-scan" className="nav-item">Quick Scan</Link>
               <div className="nav-item" onClick={() => navigate('/client-history')} style={{cursor: 'pointer'}}>History</div>
               <div className="nav-item" onClick={() => navigate('/client-report')} style={{cursor: 'pointer'}}>Reports</div>
-              <div className="nav-item">Settings</div>
+              <div className="nav-item" onClick={() => navigate('/client/settings')} style={{cursor: 'pointer'}}>Settings</div>
             </nav>
           </div>
           <div className="header-right">
