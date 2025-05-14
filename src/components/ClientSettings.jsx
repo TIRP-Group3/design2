@@ -23,7 +23,6 @@ function ClientSettings() {
                         <img
                           src="https://cdn.builder.io/api/v1/image/assets/TEMP/efe8d053bf176e0e95de7182c4e0f3484e1a8579?placeholderIfAbsent=true"
                           className="nav-icon"
-                          alt="Account Icon"
                         />
                         <div className="nav-text">Account</div>
                       </div>
@@ -32,7 +31,6 @@ function ClientSettings() {
                           <img
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc9869926a51e47a80fe4367456c5a09f6c5a241?placeholderIfAbsent=true"
                             className="nav-icon"
-                            alt="Notifications Icon"
                           />
                         </div>
                         <div className="nav-text">Notifications</div>
@@ -42,7 +40,6 @@ function ClientSettings() {
                           <img
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/4211600e20084e52c5f2887fe6ae4f7753b4a17e?placeholderIfAbsent=true"
                             className="nav-icon"
-                            alt="Appearance Icon"
                           />
                         </div>
                         <div className="nav-text">Appearance</div>
@@ -52,7 +49,6 @@ function ClientSettings() {
                           <img
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/d2d54ed72913a1d092e588c6c81204229cced5e9?placeholderIfAbsent=true"
                             className="nav-icon"
-                            alt="Dashboard Icon"
                           />
                         </div>
                         <div className="nav-text">Dashboard</div>
@@ -62,7 +58,6 @@ function ClientSettings() {
                           <img
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/ed50f69e306280321eb18bc6fb505953ef140952?placeholderIfAbsent=true"
                             className="nav-icon"
-                            alt="Logout Icon"
                           />
                         </div>
                         <div className="nav-text">Logout</div>
@@ -85,7 +80,6 @@ function ClientSettings() {
                         <img
                           src="https://cdn.builder.io/api/v1/image/assets/TEMP/43825a9af2fd4461cbc9b01f1d13ff5e7a6d5a7c?placeholderIfAbsent=true"
                           className="profile-photo"
-                          alt="Profile"
                         />
                         <div className="profile-photo-controls">
                           <div className="profile-photo-title">
@@ -143,7 +137,6 @@ function ClientSettings() {
                           <img
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/bff28e43a686cf9b3e9c594d0d09e0da90e4f390?placeholderIfAbsent=true"
                             className="select-arrow"
-                            alt="Dropdown Arrow"
                           />
                         </div>
                       </div>
@@ -154,7 +147,6 @@ function ClientSettings() {
                           <img
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/bff28e43a686cf9b3e9c594d0d09e0da90e4f390?placeholderIfAbsent=true"
                             className="select-arrow"
-                            alt="Dropdown Arrow"
                           />
                         </div>
                       </div>
