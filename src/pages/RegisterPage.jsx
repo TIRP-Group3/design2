@@ -12,6 +12,7 @@ const RegisterPage = () => {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/8224899b14006d2bd364c36d95aa0077e7517534?placeholderIfAbsent=true"
                 className="logo-image"
+                alt="MalwareGuard Logo"
               />
             </div>
             <div className="logo-text">MalwareGuard</div>

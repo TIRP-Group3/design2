@@ -37,9 +37,7 @@ function AdminLoginForm() {
           <input type="checkbox" className="admin-checkbox" />
           <span className="admin-checkbox-label">Remember me</span>
         </label>
-        <a href="#" className="admin-forgot-password">
-          Forgot password?
-        </a>
+        <button type="button" className="admin-forgot-password">Forgot password?</button>
       </div>
       <button className="admin-signin-button" onClick={handleSignIn}>Sign In</button>
       <div className="admin-client-login-container">

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/QuickScan.css";
 
 const QuickScan = () => {
-  const [uploadProgress, setUploadProgress] = useState(75);
+  const [uploadProgress] = useState(75);
   const navigate = useNavigate();
 
   const handleFileUpload = (event) => {

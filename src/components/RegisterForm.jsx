@@ -68,6 +68,7 @@ const RegisterForm = () => {
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/8899471ce3e566da1c76b5dc4f9bf2a9b95f6982?placeholderIfAbsent=true"
               className="password-icon"
+              alt="Show password"
             />
           </div>
         </div>
@@ -88,6 +89,7 @@ const RegisterForm = () => {
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/104857389dff7a4e7c34729c79a2f3ed84ecda2e?placeholderIfAbsent=true"
               className="password-icon"
+              alt="Show password"
             />
           </div>
         </div>
