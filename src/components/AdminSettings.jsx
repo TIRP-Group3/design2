@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/AdminSettings.css";
 
 function AdminSettings() {
+  const navigate = useNavigate();
   return (
     <div className="settings-container">
       <div className="settings-header">
@@ -36,7 +38,7 @@ function AdminSettings() {
               </div>
               <div className="sidebar-item-text active-text">Account</div>
             </div>
-            <div className="sidebar-item">
+            <div className="sidebar-item" onClick={() => navigate('/admin-notifications')} style={{cursor: 'pointer'}}>
               <div>
                 <svg
                   width="14"
