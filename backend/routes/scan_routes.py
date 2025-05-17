@@ -1,12 +1,14 @@
-
+# routes/scan_routes.py
 import os
 from flask import Blueprint, request, jsonify
 from werkzeug.utils import secure_filename
-from datetime import datetime
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from models import ScanResult
 from database import db
+from services.prediction_service import predict_with_model
+import pandas as pd
+import uuid
 
 scan_bp = Blueprint('scan', __name__)
 UPLOAD_FOLDER = 'uploads/scan_files'
@@ -23,34 +25,59 @@ def upload_and_scan():
 
     filename = secure_filename(file.filename)
     filepath = os.path.join(UPLOAD_FOLDER, filename)
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     file.save(filepath)
 
-    result, threat_type = predict_malware(filepath)
+    try:
+        df = pd.read_csv(filepath)
+        predictions = predict_with_model(filepath)
+        user_id = int(get_jwt_identity())
 
-    user_id = int(get_jwt_identity())
-    scan = ScanResult(
-        filename=filename,
-        filetype=filename.split('.')[-1],
-        result=result,
-        threat_type=threat_type,
-        user_id=user_id,
-        location=filepath,
-        status="Quarantined" if result == "Malicious" else "Resolved"
-    )
-    db.session.add(scan)
-    db.session.commit()
+        batch_id = str(uuid.uuid4())
+        results = []
+        for i, prediction in enumerate(predictions):
+            row_filename = df.iloc[i]['file_name'] if 'file_name' in df.columns else f"{filename} [row {i}]"
+            scan = ScanResult(
+                filename=row_filename,
+                filetype=row_filename.split('.')[-1],
+                result=prediction['label'],
+                threat_type=prediction['threat_type'],
+                user_id=user_id,
+                location=filepath,
+                batch_id=batch_id,
+                status="Quarantine or delete" if prediction['label'] == "Malicious" else "Safe to keep"
+            )
+            db.session.add(scan)
+            results.append({
+                'filename': scan.filename,
+                'result': scan.result,
+                'threat_type': scan.threat_type,
+                'confidence': prediction['confidence'],
+                'status': scan.status,
+            })
 
-    return jsonify({
-        'filename': filename,
-        'result': result,
-        'threat_type': threat_type,
-        'status': scan.status
-    }), 200
+        db.session.commit()
+        return jsonify({
+            "batch_id": batch_id,
+            "results": results
+        }), 200
 
-def predict_malware(filepath):
-    if filepath.endswith('.exe'):
-        return "Malicious", "Trojan"
-    elif filepath.endswith('.js'):
-        return "Suspicious", "Script"
-    else:
-        return "Clean", "None"
+    except Exception as e:
+        return jsonify({'msg': f'Prediction failed: {str(e)}'}), 500
+
+@scan_bp.route('/history', methods=['GET'])
+@jwt_required()
+def get_scan_history():
+    user_id = get_jwt_identity()
+    scans = ScanResult.query.filter_by(user_id=user_id).order_by(ScanResult.id.desc()).all()
+    return jsonify([
+        {
+            'filename': s.filename,
+            'threat_type': s.threat_type,
+            'result': s.result,
+            'confidence': s.confidence,
+            'status': s.status,
+            'uploaded_at': s.uploaded_at.strftime('%Y-%m-%d')
+        }
+        for s in scans
+    ])

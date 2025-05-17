@@ -21,6 +21,8 @@ class ScanResult(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     location = db.Column(db.String(500))
     status = db.Column(db.String(50))
+    batch_id = db.Column(db.String(64), nullable=False)
+
 
 class Dataset(db.Model):
     id = db.Column(db.Integer, primary_key=True)

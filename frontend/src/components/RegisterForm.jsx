@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Avatar,
   Box,
@@ -10,13 +10,42 @@ import {
 } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { useNavigate } from 'react-router-dom';
+import api from '../api'; // assuming you created api.js for axios instance
 
 function RegisterForm() {
   const navigate = useNavigate();
 
-  const handleRegister = () => {
-    // TODO: Add registration logic
-    navigate('/login');
+  const [form, setForm] = useState({
+    fullName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleRegister = async () => {
+    if (form.password !== form.confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+
+    try {
+      await api.post('/auth/register', {
+        name: form.fullName,
+        email: form.email,
+        password: form.password,
+      });
+      setSuccess('Registered successfully!');
+      navigate('/login');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Registration failed.');
+    }
   };
 
   return (
@@ -28,10 +57,44 @@ function RegisterForm() {
           </Avatar>
           <Typography variant="h6">Create a MalwareGuard Account</Typography>
 
-          <TextField fullWidth label="Full Name" margin="normal" />
-          <TextField fullWidth label="Email Address" margin="normal" type="email" />
-          <TextField fullWidth label="Password" margin="normal" type="password" />
-          <TextField fullWidth label="Confirm Password" margin="normal" type="password" />
+          <TextField
+            fullWidth
+            label="Full Name"
+            margin="normal"
+            name="fullName"
+            value={form.fullName}
+            onChange={handleChange}
+          />
+          <TextField
+            fullWidth
+            label="Email Address"
+            margin="normal"
+            name="email"
+            type="email"
+            value={form.email}
+            onChange={handleChange}
+          />
+          <TextField
+            fullWidth
+            label="Password"
+            margin="normal"
+            name="password"
+            type="password"
+            value={form.password}
+            onChange={handleChange}
+          />
+          <TextField
+            fullWidth
+            label="Confirm Password"
+            margin="normal"
+            name="confirmPassword"
+            type="password"
+            value={form.confirmPassword}
+            onChange={handleChange}
+          />
+
+          {error && <Typography color="error">{error}</Typography>}
+          {success && <Typography color="primary">{success}</Typography>}
 
           <Button
             fullWidth

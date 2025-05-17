@@ -15,6 +15,9 @@ def register():
     password = data.get('password')
     role = data.get('role', 'client')
 
+    if not email or not name or not password:
+        return jsonify({'msg': 'Missing required fields'}), 400
+    email = email.lower().strip()
     if User.query.filter_by(email=email).first():
         return jsonify({'msg': 'User already exists'}), 400
 
@@ -37,6 +40,11 @@ def login():
 
     access_token = create_access_token(identity=str(user.id))
 
-
-    return jsonify(access_token=access_token), 200
-
+    return jsonify(
+        token=access_token,
+        user={
+            "email": user.email,
+            "name": user.name,
+            "role": user.role
+        }
+    ), 200

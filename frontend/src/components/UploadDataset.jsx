@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -7,15 +7,69 @@ import {
   Paper,
   Typography,
   Chip,
+  CircularProgress,
 } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Layout from './Layout';
+import api from '../api';
+import TrainingHistory from "../components/TrainingHistory";
 
 function UploadDataset() {
+  const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [analysis, setAnalysis] = useState(null);
+
+  const handleFileChange = (e) => {
+    const selected = e.target.files[0];
+    setFile(selected);
+    setMessage('');
+    setAnalysis(null);
+  };
+
+  const handleUpload = async () => {
+    if (!file) {
+      setMessage('Please select a dataset first.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      setLoading(true);
+      const res = await api.post('/model/train', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      const data = res.data;
+
+      setAnalysis({
+        type: file.name.split('.').pop().toUpperCase(),
+        size: `${(file.size / (1024 * 1024)).toFixed(2)} MB`,
+        rows: data.rows,
+        numeric: data.columns.numeric,
+        categorical: data.columns.categorical,
+        datetime: data.columns.datetime,
+        completeness: data.completeness,
+        accuracy: data.accuracy,
+      });
+
+      setMessage('Model trained successfully!');
+    } catch (err) {
+      console.error(err);
+      setMessage(err.response?.data?.msg || 'Upload failed.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Layout>
       <Container maxWidth="lg">
-        {/* Upload Area */}
         <Paper sx={{ p: 4, mb: 4 }}>
           <Typography variant="h6" gutterBottom>
             Upload Dataset
@@ -31,98 +85,80 @@ function UploadDataset() {
           >
             <CloudUploadIcon sx={{ fontSize: 50, color: '#2196f3' }} />
             <Typography mt={2}>
-              Drag and drop your dataset file here, or
+              {file ? `Selected File: ${file.name}` : 'Drag and drop your dataset file here, or'}
             </Typography>
-            <Button variant="contained" sx={{ mt: 2 }}>
+            <Button variant="contained" sx={{ mt: 2 }} component="label">
               Browse Files
+              <input
+                type="file"
+                hidden
+                accept=".csv,.xlsx,.json"
+                onChange={handleFileChange}
+              />
             </Button>
             <Typography variant="caption" display="block" mt={1}>
               Supported formats: CSV, XLSX, JSON (Max size: 50MB)
             </Typography>
           </Box>
+
+          <Box mt={3} display="flex" justifyContent="flex-end">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleUpload}
+              disabled={loading}
+            >
+              {loading ? <CircularProgress size={24} /> : 'Upload and Train'}
+            </Button>
+          </Box>
+
+          {message && (
+            <Typography mt={2} color={message.includes('success') ? 'primary' : 'error'}>
+              {message}
+            </Typography>
+          )}
         </Paper>
 
-        {/* Dataset Detection */}
-        <Paper sx={{ p: 3, mb: 4 }}>
-          <Typography variant="h6" gutterBottom>
-            Dataset Detection
-          </Typography>
-          <Chip
-            label="✅ Dataset successfully detected"
-            color="success"
-            sx={{ mb: 2 }}
-          />
+        {analysis && (
+          <Paper sx={{ p: 3, mb: 4 }}>
+            <Typography variant="h6" gutterBottom>
+              Dataset Summary
+            </Typography>
+            <Chip
+              label="✅ Dataset successfully uploaded and trained"
+              color="success"
+              sx={{ mb: 2 }}
+            />
 
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
-              <Paper variant="outlined" sx={{ p: 2 }}>
-                <Typography variant="subtitle2">File Information</Typography>
-                <Typography variant="body2">Type: CSV</Typography>
-                <Typography variant="body2">Size: 2.4 MB</Typography>
-                <Typography variant="body2">Rows: 1,234</Typography>
-              </Paper>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={4}>
+                <Paper variant="outlined" sx={{ p: 2 }}>
+                  <Typography variant="subtitle2">File Information</Typography>
+                  <Typography variant="body2">Type: {analysis.type}</Typography>
+                  <Typography variant="body2">Size: {analysis.size}</Typography>
+                  <Typography variant="body2">Rows: {analysis.rows}</Typography>
+                </Paper>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Paper variant="outlined" sx={{ p: 2 }}>
+                  <Typography variant="subtitle2">Column Types</Typography>
+                  <Typography variant="body2">Numeric: {analysis.numeric}</Typography>
+                  <Typography variant="body2">Categorical: {analysis.categorical}</Typography>
+                  <Typography variant="body2">Date/Time: {analysis.datetime}</Typography>
+                </Paper>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Paper variant="outlined" sx={{ p: 2 }}>
+                  <Typography variant="subtitle2">Training Result</Typography>
+                  <Typography variant="body2">Completeness: {analysis.completeness}</Typography>
+                  <Typography variant="body2">Accuracy: {analysis.accuracy}%</Typography>
+                </Paper>
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <Paper variant="outlined" sx={{ p: 2 }}>
-                <Typography variant="subtitle2">Column Types</Typography>
-                <Typography variant="body2">Numeric: 8</Typography>
-                <Typography variant="body2">Categorical: 4</Typography>
-                <Typography variant="body2">Date/Time: 2</Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Paper variant="outlined" sx={{ p: 2 }}>
-                <Typography variant="subtitle2">Data Quality</Typography>
-                <Typography variant="body2">Missing Values: 0.5%</Typography>
-                <Typography variant="body2">Duplicates: None</Typography>
-                <Typography variant="body2">Consistency: 98%</Typography>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Paper>
+          </Paper>
+        )}
 
-        {/* Analysis Results */}
-        <Typography variant="h6" gutterBottom>
-          Analysis Results
-        </Typography>
-        <Grid container spacing={2} mb={3}>
-          <Grid item xs={12} md={3}>
-            <Paper
-              sx={{
-                p: 2,
-                backgroundColor: '#e8f5e9',
-                borderLeft: '6px solid #4caf50',
-              }}
-            >
-              <Typography variant="subtitle2">Data Completeness</Typography>
-              <Typography variant="h6" color="success.main">
-                99.5%
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Paper
-              sx={{
-                p: 2,
-                backgroundColor: '#fff3e0',
-                borderLeft: '6px solid #ff9800',
-              }}
-            >
-              <Typography variant="subtitle2">Processing Time</Typography>
-              <Typography variant="h6" color="warning.main">
-                1.2s
-              </Typography>
-            </Paper>
-          </Grid>
-        </Grid>
-
-        {/* Footer Buttons */}
-        <Box display="flex" justifyContent="flex-end" gap={2}>
-          <Button variant="outlined">Download Report</Button>
-          <Button variant="contained" color="primary">
-            Scan Results
-          </Button>
-        </Box>
+        <TrainingHistory />
       </Container>
     </Layout>
   );
