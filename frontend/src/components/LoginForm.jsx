@@ -1,19 +1,65 @@
 import React from 'react';
-import Layout from './Layout';
-import { Box, Button, Container, TextField, Typography } from '@mui/material';
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  TextField,
+  Typography,
+  Paper,
+} from '@mui/material';
+import LockIcon from '@mui/icons-material/Lock';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // TODO: Add real login logic
+    navigate('/admin/dashboard');
+  };
+
   return (
-    <Layout>
-      <Container maxWidth="sm">
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Typography variant="h4">Login</Typography>
-          <TextField label="Username" variant="outlined" fullWidth />
-          <TextField label="Password" variant="outlined" type="password" fullWidth />
-          <Button variant="contained" color="primary">Login</Button>
+    <Container maxWidth="xs">
+      <Paper elevation={3} sx={{ p: 4, mt: 8 }}>
+        <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
+          <Avatar sx={{ bgcolor: 'primary.main' }}>
+            <LockIcon />
+          </Avatar>
+          <Typography variant="h6">Sign in to MalwareGuard</Typography>
+
+          <TextField
+            fullWidth
+            label="Email Address"
+            margin="normal"
+            type="email"
+          />
+          <TextField
+            fullWidth
+            label="Password"
+            margin="normal"
+            type="password"
+          />
+
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            sx={{ mt: 2 }}
+            onClick={handleLogin}
+          >
+            Login
+          </Button>
+
+          <Typography variant="body2" sx={{ mt: 2 }}>
+            Don't have an account?{' '}
+            <Button onClick={() => navigate('/register')} size="small">
+              Register
+            </Button>
+          </Typography>
         </Box>
-      </Container>
-    </Layout>
+      </Paper>
+    </Container>
   );
 }
 

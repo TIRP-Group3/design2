@@ -36,7 +36,7 @@ function App() {
         <Route path="/admin/reports" element={<AdminReports />} />
         <Route path="/admin/predictions" element={<AdminPrediction />} />
         <Route path="/admin/scan-result" element={<AdminScanResult />} />
-        <Route path="/admin/detection" element={<AdminDetection />} />
+        <Route path="/admin/detection" element={<AdminReports />} />
         <Route path="/admin/settings" element={<AdminSettings />} />
         <Route path="/admin/notifications" element={<AdminNotifications />} />
 
