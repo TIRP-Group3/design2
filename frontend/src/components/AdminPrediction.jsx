@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -59,6 +59,26 @@ function AdminPrediction() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleDownloadCSV = () => {
+    const headers = ['Filename', 'Threat Type', 'Result', 'Confidence', 'Recommendation'];
+    const rows = latestResults.map(r => [
+      r.filename,
+      r.threat_type,
+      r.result,
+      (r.confidence * 100).toFixed(2) + '%',
+      r.status
+    ]);
+    const csvContent = [headers, ...rows].map(row => row.join(',')).join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.setAttribute('download', `scan_batch_${batchId || 'latest'}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const getChipColor = (result) => {
@@ -133,18 +153,22 @@ function AdminPrediction() {
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
-                <Paper sx={{ p: 2, backgroundColor: '#fff8e1' }}>
-                  <Typography variant="body2">In Quarantine</Typography>
-                  <Typography variant="h5" color="warning.main">{summary.quarantined}</Typography>
+                <Paper sx={{ p: 2, backgroundColor: '#fffde7' }}>
+                  <Typography variant="body2">Quarantine Recommended</Typography>
+                  <Typography variant="h5">{summary.quarantined}</Typography>
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
                 <Paper sx={{ p: 2, backgroundColor: '#e8f5e9' }}>
-                  <Typography variant="body2">Resolved</Typography>
-                  <Typography variant="h5" color="success.main">{summary.resolved}</Typography>
+                  <Typography variant="body2">Safe to Keep</Typography>
+                  <Typography variant="h5">{summary.resolved}</Typography>
                 </Paper>
               </Grid>
             </Grid>
+
+            <Box display="flex" justifyContent="flex-end" mb={1}>
+              <Button variant="outlined" onClick={handleDownloadCSV}>Download CSV</Button>
+            </Box>
 
             <Paper>
               <Table size="small">

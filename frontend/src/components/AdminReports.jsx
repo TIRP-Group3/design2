@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -13,102 +13,75 @@ import {
   TableBody,
   Typography,
   IconButton,
-  Pagination,
+  Pagination
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
-import TimelineIcon from '@mui/icons-material/Timeline';
 import Layout from './Layout';
-import ThreatTimeline from './ThreatTimeline'
-const reportData = [
-  {
-    name: 'Trojan.Win32.Kovter',
-    type: 'Trojan',
-    location: 'C:\\Windows\\System32',
-    status: 'Active',
-  },
-  {
-    name: 'Adware.Win32.Elex',
-    type: 'Adware',
-    location: 'C:\\Program Files',
-    status: 'Quarantined',
-  },
-  {
-    name: 'Spyware.Win32.Zeus',
-    type: 'Spyware',
-    location: 'C:\\Users\\AppData',
-    status: 'Blocked',
-  },
-];
+import ThreatTimeline from './ThreatTimeline';
+import api from '../api';
 
 const getChipColor = (status) => {
   switch (status) {
-    case 'Active':
-      return 'error';
-    case 'Quarantined':
-      return 'warning';
-    case 'Blocked':
-      return 'success';
-    default:
-      return 'default';
+    case 'Active': return 'error';
+    case 'Quarantined': return 'warning';
+    case 'Blocked': return 'success';
+    default: return 'default';
   }
 };
 
-const detectionTimeline = [
-  { label: 'Trojan.Win32.Generic', time: '15 Mar, 14:30', color: 'error' },
-  { label: 'Adware.Win32.Elex', time: '15 Mar, 14:10', color: 'warning' },
-  { label: 'Spyware.Win32.Zeus', time: '14 Mar, 18:00', color: 'success' },
-];
-
 function AdminReports() {
+  const [reportData, setReportData] = useState([]);
+
+  useEffect(() => {
+    api.get('/scan/scan-results')
+      .then(res => setReportData(res.data))
+      .catch(err => console.error("Failed to fetch scan results", err));
+  }, []);
+
   return (
     <Layout>
       <Container maxWidth="lg">
-        {/* Summary Boxes */}
         <Grid container spacing={2} mb={4}>
           <Grid item xs={12} sm={6} md={3}>
             <Paper sx={{ p: 2, backgroundColor: '#e3f2fd' }}>
               <Typography variant="body2">Total Threats</Typography>
-              <Typography variant="h5">1,247</Typography>
+              <Typography variant="h5">{reportData.length}</Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Paper sx={{ p: 2, backgroundColor: '#e8f5e9' }}>
               <Typography variant="body2">Blocked</Typography>
-              <Typography variant="h5">985</Typography>
+              <Typography variant="h5">
+                {reportData.filter(r => r.status === 'Blocked').length}
+              </Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Paper sx={{ p: 2, backgroundColor: '#fffde7' }}>
               <Typography variant="body2">Quarantined</Typography>
-              <Typography variant="h5">156</Typography>
+              <Typography variant="h5">
+                {reportData.filter(r => r.status === 'Quarantined').length}
+              </Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Paper sx={{ p: 2, backgroundColor: '#ffebee' }}>
               <Typography variant="body2">Active Threats</Typography>
-              <Typography variant="h5" color="error">106</Typography>
+              <Typography variant="h5" color="error">
+                {reportData.filter(r => r.status === 'Active').length}
+              </Typography>
             </Paper>
           </Grid>
         </Grid>
 
-        {/* Timeline Section */}
-       <ThreatTimeline />
+        {/* Pass real scan data here */}
+        <ThreatTimeline scanData={reportData} />
 
-        {/* Recent Threats Table */}
-        <Typography variant="h6" gutterBottom>
-          Recent Threats
-        </Typography>
-
+        <Typography variant="h6" gutterBottom>Recent Threats</Typography>
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-          <Box>
-            <Button startIcon={<FilterListIcon />} variant="outlined" size="small">
-              Filter
-            </Button>
-          </Box>
-          <Box>
-            <Button variant="contained" size="small">Export Report</Button>
-          </Box>
+          <Button startIcon={<FilterListIcon />} variant="outlined" size="small">Filter</Button>
+          <Button variant="contained" size="small">Export Report</Button>
         </Box>
 
         <Paper sx={{ mb: 2 }}>
@@ -125,8 +98,8 @@ function AdminReports() {
             <TableBody>
               {reportData.map((row, idx) => (
                 <TableRow key={idx}>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.type}</TableCell>
+                  <TableCell>{row.threat_type}</TableCell>
+                  <TableCell>{row.result}</TableCell>
                   <TableCell>{row.location}</TableCell>
                   <TableCell>
                     <Chip label={row.status} color={getChipColor(row.status)} />
@@ -142,14 +115,8 @@ function AdminReports() {
           </Table>
         </Paper>
 
-        {/* Pagination */}
         <Box display="flex" justifyContent="flex-end">
-          <Pagination count={3} page={1} variant="outlined" shape="rounded" />
-        </Box>
-
-        {/* Return Button */}
-        <Box mt={3}>
-          <Button variant="contained" color="primary">Dashboard</Button>
+          <Pagination count={1} page={1} variant="outlined" shape="rounded" />
         </Box>
       </Container>
     </Layout>

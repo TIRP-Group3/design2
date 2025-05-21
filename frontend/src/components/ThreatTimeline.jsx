@@ -1,3 +1,4 @@
+// ✅ ThreatTimeline.jsx (optimized)
 import React, { useState } from 'react';
 import {
   Box,
@@ -8,25 +9,40 @@ import {
 } from '@mui/material';
 import { LineChart, axisClasses } from '@mui/x-charts';
 
-const dailyData = [1, 2, 6, 4];
-const weeklyData = [3, 5, 12, 4, 7, 5, 6];
-const monthlyData = [20, 35, 28, 40];
-
-const labels = {
-  daily: ['00:00', '06:00', '12:00', '18:00'],
-  weekly: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-  monthly: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-};
-
-const ThreatTimeline = () => {
+const ThreatTimeline = ({ scanData }) => {
   const [view, setView] = useState('weekly');
 
   const handleChange = (_, nextView) => {
     if (nextView) setView(nextView);
   };
 
-  const data = view === 'daily' ? dailyData : view === 'monthly' ? monthlyData : weeklyData;
-  const xLabels = labels[view];
+  const getAggregatedData = (viewType) => {
+    const buckets = {};
+
+    scanData.forEach(entry => {
+      const date = new Date(entry.scanned_at);
+      let key;
+
+      if (viewType === 'daily') {
+        key = `${date.getHours()}:00`;
+      } else if (viewType === 'weekly') {
+        key = date.toLocaleDateString('en-US', { weekday: 'short' });
+      } else if (viewType === 'monthly') {
+        key = `Week ${Math.ceil(date.getDate() / 7)}`;
+      }
+
+      buckets[key] = (buckets[key] || 0) + 1;
+    });
+
+    const sortedKeys = Object.keys(buckets).sort((a, b) => a.localeCompare(b));
+
+    return {
+      labels: sortedKeys,
+      data: sortedKeys.map(k => buckets[k])
+    };
+  };
+
+  const { data, labels } = getAggregatedData(view);
 
   return (
     <Paper sx={{ p: 3, mb: 4, backgroundColor: '#f9f9f9' }}>
@@ -47,7 +63,7 @@ const ThreatTimeline = () => {
       <LineChart
         height={300}
         series={[{ data, label: 'Threats', type: 'line' }]}
-        xAxis={[{ scaleType: 'point', data: xLabels }]}
+        xAxis={[{ scaleType: 'point', data: labels }]}
         sx={{
           [`& .${axisClasses.left} .MuiTypography-root`]: { fontSize: 12 },
           [`& .${axisClasses.bottom} .MuiTypography-root`]: { fontSize: 12 },

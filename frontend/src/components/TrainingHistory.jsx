@@ -41,8 +41,6 @@ function TrainingHistory() {
             <TableHead>
               <TableRow>
                 <TableCell>Filename</TableCell>
-                <TableCell>Accuracy</TableCell>
-                <TableCell>Trained By (User ID)</TableCell>
                 <TableCell>Trained At</TableCell>
                 <TableCell>Model Path</TableCell>
               </TableRow>
@@ -51,8 +49,6 @@ function TrainingHistory() {
               {history.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>{row.filename}</TableCell>
-                  <TableCell>{row.accuracy}%</TableCell>
-                  <TableCell>{row.uploaded_by}</TableCell>
                   <TableCell>{row.uploaded_at}</TableCell>
                   <TableCell>{row.model_path}</TableCell>
                 </TableRow>

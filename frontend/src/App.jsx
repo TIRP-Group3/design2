@@ -18,6 +18,7 @@ import ClientScanResult from './components/ClientScanResult';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import UploadDataset from './components/UploadDataset';
+import PublicScan from './components/PublicScan';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
 
         {/* Shared */}
         <Route path="/upload-dataset" element={<UploadDataset />} />
+        <Route path="/public-scan" element={<PublicScan />} />
       </Routes>
     </Router>
   );
