@@ -4,6 +4,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
 from models import User
 from database import db
+from datetime import timedelta
+
+# Set expiry to e.g., 100 years
+access_token = create_access_token(identity=str(user.id), expires_delta=timedelta(days=365 * 100))
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -38,7 +42,7 @@ def login():
     if not user or not check_password_hash(user.password, password):
         return jsonify({'msg': 'Invalid credentials'}), 401
 
-    access_token = create_access_token(identity=str(user.id))
+    access_token = create_access_token(identity=str(user.id), expires_delta=timedelta(days=365 * 100))
 
     return jsonify(
         token=access_token,
