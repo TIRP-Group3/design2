@@ -6,9 +6,6 @@ from models import User
 from database import db
 from datetime import timedelta
 
-# Set expiry to e.g., 100 years
-access_token = create_access_token(identity=str(user.id), expires_delta=timedelta(days=365 * 100))
-
 auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/register', methods=['POST'])
