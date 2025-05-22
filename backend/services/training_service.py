@@ -48,7 +48,8 @@ def train_hybrid_model(file_path, user_id):
     embed = Embedding(input_dim=np.max(X_pad) + 1, output_dim=64)(input_layer)
 
     # LSTM branch
-    x1 = LSTM(64)(embed)
+    x1 = LSTM(units=64, dropout=0.2, recurrent_dropout=0.2)(embed)
+
 
     # CNN branch
     x2 = Conv1D(64, kernel_size=3, activation='relu')(embed)
